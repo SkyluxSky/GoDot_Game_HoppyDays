@@ -37,3 +37,8 @@ Nodes For 2D Player Characters:
 
 ----------------------------------------------------------------------------------------------
 
+A Scene - Can be any self contained selection of assets.
+
+Film clacker: Classifies instance scene.
+
+Godot Note: Positive numbers = Gravity Up or down && Negative numbers = less Gravity or up.
