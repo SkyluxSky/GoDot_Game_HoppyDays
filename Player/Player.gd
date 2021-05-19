@@ -18,6 +18,11 @@ const GRAVITY = 300
 const UP = Vector2(0,-1)
 const JUMP_SPEED = 5000
 
+
+#signal keyword - creates new signal in node menu
+signal animate
+
+
 #Function for player movement.
 func _physics_process(delta):
 	
@@ -26,7 +31,7 @@ func _physics_process(delta):
 	jump()
 	move()
 	animate()
-	move_and_slide(motion, UP)
+	move_and_slide(motion, UP) #Handles Collision Properties of Player
 	#print(delta)
 
 func apply_gravity():
@@ -51,18 +56,8 @@ func move():
 		motion.x = 0
 		
 
-#animate character
+# calls PlayerAnimation signal: (Custom Signal)
 func animate():
-	if motion.y < 0:
-		$AnimatedSprite.play("jump")
-		
-	elif motion.x > 0:
-		$AnimatedSprite.play("walk")
-		$AnimatedSprite.flip_h = false#Face Right
-		
-	elif motion.x < 0:
-		$AnimatedSprite.play("walk")
-		$AnimatedSprite.flip_h = true#Face Left
-		
-	else:
-		$AnimatedSprite.play("idle")
+	emit_signal("animate", motion)
+	
+
