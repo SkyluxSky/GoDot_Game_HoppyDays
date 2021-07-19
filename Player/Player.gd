@@ -34,18 +34,22 @@ func _physics_process(delta):
 	move_and_slide(motion, UP) #Handles Collision Properties of Player
 	#print(delta)
 
+
 func apply_gravity():
 	if not is_on_floor():
 		motion.y += GRAVITY
 	else:
 		motion.y = 0
 		
+
+
 func jump():
 	#Define Jumping
 	if Input.is_action_pressed("Jump") and is_on_floor():
 		motion.y -= JUMP_SPEED
 	
-	
+
+
 func move():
 		#Method for making forcing only one button to be pressed at a time.
 	if Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
